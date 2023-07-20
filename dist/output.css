@@ -1656,6 +1656,10 @@ video {
     border-width: 0px;
   }
 
+  .md\:p-0 {
+    padding: 0px;
+  }
+
   .md\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
