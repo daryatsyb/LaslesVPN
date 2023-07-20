@@ -112,7 +112,8 @@ closeSignupBtn.addEventListener('click', () => {
   $(signup).fadeOut();
 });
 
-btnSubscription.addEventListener('click', () => {
+btnSubscription.addEventListener('click', (event) => {
+  event.stopPropagation(); // Остановка всплытия события
   $(wrapper).fadeIn();
   $(subscription).fadeIn();
 });
@@ -120,4 +121,12 @@ btnSubscription.addEventListener('click', () => {
 closeSubscrBtn.addEventListener('click', () => {
   $(wrapper).fadeOut();
   $(subscription).fadeOut();
+});
+
+$(".wrapper").click(function(event) {
+  // Проверяем, что клик был вне области модального окна
+  if ($(event.target).hasClass("wrapper")) {
+    // Закрываем модальное окно и подложку
+    $(".modal, .wrapper").fadeOut();
+  }
 });
