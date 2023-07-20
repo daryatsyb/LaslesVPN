@@ -40,7 +40,26 @@ $(document).ready(function(){
   $('#nextBtn').click(function() {
     owl.trigger('next.owl.carousel');
   });
+
   
+  $('.nav__button').click(function(event) {
+    $('.nav').toggleClass('hidden');
+    event.stopPropagation(); // предотвращение распространения события клика
+  });
+
+  $('.header__menu_item').click(function(event) {
+    $('.nav').toggleClass('hidden');
+    event.stopPropagation(); // предотвращение распространения события клика
+  });
+
+  if ($('.nav').length) {
+    $(document).click(function (event) {
+      // Проверяем, что клик был сделан не по меню .nav и не по кнопке .nav__button
+      if (!$(event.target).closest('.nav').length && !$(event.target).hasClass('nav__button')) {
+        $('.nav').addClass('hidden');
+      }
+    });
+  }
 });
 
 const btnSignup = document.querySelectorAll('.btn-signup');
